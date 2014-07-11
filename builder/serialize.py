@@ -1,45 +1,5 @@
-from enum import Enum, IntEnum
-
+from fields import FieldSize
 from stream import StreamIO
-
-class FieldError(Exception):
-    pass
-    
-class FieldSize(IntEnum):
-    UInt8  = 1
-    UInt16 = 2
-    UInt32 = 4
-    UInt64 = 8
-    String = 9
-
-class Field(IntEnum):
-    TransactionVersion = FieldSize.UInt16
-    TransactionType    = FieldSize.UInt16
-    CurrencyIdentifier = FieldSize.UInt32
-    NumberOfCoins      = FieldSize.UInt64
-    NumberOfBlocks     = FieldSize.UInt8
-    Action             = FieldSize.UInt8
-    Ecosystem          = FieldSize.UInt8
-    PropertyType       = FieldSize.UInt16
-    Text               = FieldSize.String
-    Timestamp          = FieldSize.UInt64
-    Percentage         = FieldSize.UInt8
-
-    @classmethod
-    def find(cls, name):
-        try:
-            return Field[name]
-        except KeyError:
-            pass        
-        name_normalized = str(name.strip())
-        name_normalized = name.replace('-', '')
-        name_normalized = name_normalized.replace('_', '')
-        name_normalized = name_normalized.upper()
-        for name, field in Field.__members__.items():
-            field_name = name.upper()
-            if field_name == name_normalized:
-                return field
-        raise FieldError('invalid field: "%s"'%name)
 
 class FieldSerializer(object):
     @classmethod
