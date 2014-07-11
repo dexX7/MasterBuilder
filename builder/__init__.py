@@ -1,6 +1,7 @@
 import json
 
-from serialize import TransactionSerializer, Field
+from fields import Field
+from serialize import TransactionSerializer
 from utils import b2x, x
 
 def create_transaction(data):

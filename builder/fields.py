@@ -68,7 +68,7 @@ Field.add_alias(Field.CurrencyIdentifier,
                  'property_id_desired', 'property_identifier_desired', 
                  'previous_property_id', 'previous_property_identifier'])
 Field.add_alias(Field.NumberOfCoins,
-                ['amount', 'amount_to_send', 'amount_to_transfer', 
+                ['number_of_coins', 'amount', 'amount_to_send', 
                  'amount_for_sale', 'amount_desired', 'fee', 'minimum_fee',
                  'transaction_fee', 'min_fee', 'min_transaction_fee', 
                  'minimum_transaction_fee', 'amount_to_transfer', 
