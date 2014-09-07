@@ -13,6 +13,12 @@ class TestBuilder(unittest.TestCase):
         actual = create_transaction(data)
         self.assertEqual(actual, expected)
 
+    def test_create_with_json(self):
+        data = '[{"version": 0}, {"type": 0}, {"currency_id": 3}, {"number_of_coins": 12000}]'
+        expected = '00000000000000030000000000002ee0'
+        actual = create_transaction(data)
+        self.assertEqual(actual, expected)
+
     def test_decode(self):
         hex = '0000000000000001000000012a05f200'
         fields = [Field.TransactionVersion,

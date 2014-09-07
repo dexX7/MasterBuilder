@@ -1,0 +1,5 @@
+obj/
+*.pyproj
+*.sln
+*.suo
+*.pyc

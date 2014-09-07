@@ -53,6 +53,17 @@ class Field(IntEnum):
                 return value
         return None
 
+Field.add_alias(FieldSize.UInt8,  # 1 byte
+                ['uint8', 'int8', 'ubyte', 'byte'])
+Field.add_alias(FieldSize.UInt16, # 2 byte
+                ['uint16', 'uchar', 'ushort', 'int16', 'char', 'short'])
+Field.add_alias(FieldSize.UInt32, # 4 byte
+                ['uint32', 'uint', 'uinteger', 'int32', 'int', 'integer'])
+Field.add_alias(FieldSize.UInt64, # 8 byte
+                ['uint64', 'ulong', 'int64', 'long', 'double'])
+Field.add_alias(FieldSize.String, # var len
+                ['string'])
+
 Field.add_alias(Field.TransactionVersion,
                 ['transaction_version', 'version'])
 Field.add_alias(Field.TransactionType,
@@ -66,7 +77,8 @@ Field.add_alias(Field.CurrencyIdentifier,
                  'property_id', 'property_to_send', 'property_to_transfer', 
                  'property_for_sale', 'property_desired', 
                  'property_id_desired', 'property_identifier_desired', 
-                 'previous_property_id', 'previous_property_identifier'])
+                 'previous_property_id', 'previous_property_identifier',
+                 'property', 'currency'])
 Field.add_alias(Field.NumberOfCoins,
                 ['number_of_coins', 'amount', 'amount_to_send', 
                  'amount_for_sale', 'amount_desired', 'fee', 'minimum_fee',
@@ -84,7 +96,7 @@ Field.add_alias(Field.Ecosystem,
 Field.add_alias(Field.PropertyType,
                 ['property_type'])
 Field.add_alias(Field.Text,
-                ['text', 'null_terminated_string', 'string', 
+                ['text', 'null_terminated_string', 
                  'property_category', 'property_subcategory', 
                  'property_label', 'property_name', 'property_url',
                  'property_uri', 'property_description', 'property_data',

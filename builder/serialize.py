@@ -1,5 +1,7 @@
 from fields import FieldSize
 from stream import StreamIO
+from types import *
+from __builtin__ import dict
 
 class FieldSerializer(object):
     @classmethod
@@ -44,7 +46,8 @@ class TransactionSerializer(object):
     @classmethod
     def stream_serialize(cls, stream, fields):        
         for field in fields:
-            FieldSerializer.stream_serialize(stream, field[0], field[1])
+            if len(field) > 1:
+                FieldSerializer.stream_serialize(stream, field[0], field[1])
 
     @classmethod
     def stream_deserialize(cls, stream, field_sizes):
@@ -56,6 +59,8 @@ class TransactionSerializer(object):
 
     @classmethod
     def serialize(cls, fields):
+        """Expects a list of two element tuple or list:
+        [(field_type, field_value), (field_type, field_value),]"""
         stream = StreamIO()
         cls.stream_serialize(stream, fields)
         return stream.getvalue()
